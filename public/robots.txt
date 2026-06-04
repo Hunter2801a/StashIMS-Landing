@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Agregar sitemap cuando el dominio de produccion este definido.

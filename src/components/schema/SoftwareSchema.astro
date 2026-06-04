@@ -1,0 +1,19 @@
+---
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	name: "StashIMS",
+	applicationCategory: "BusinessApplication",
+	operatingSystem: "Web",
+	description:
+		"Software de gestión de inventarios (WMS) para PyMEs en Latinoamérica con control de stock en tiempo real, múltiples ubicaciones, reportes y alertas.",
+	offers: {
+		"@type": "Offer",
+		price: "0",
+		priceCurrency: "USD",
+		description: "Demo gratuita sin compromiso"
+	}
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>

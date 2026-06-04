@@ -1,0 +1,36 @@
+---
+interface Row {
+	indicator: string;
+	measure: string;
+	impact: string;
+}
+
+interface Props {
+	caption: string;
+	rows: Row[];
+}
+
+const { caption, rows } = Astro.props;
+---
+
+<div class="kpi-table-wrap reveal">
+	<table>
+		<caption>{caption}</caption>
+		<thead>
+			<tr>
+				<th scope="col">Indicador</th>
+				<th scope="col">Que mide</th>
+				<th scope="col">Por que importa</th>
+			</tr>
+		</thead>
+		<tbody>
+			{rows.map((row) => (
+				<tr>
+					<td>{row.indicator}</td>
+					<td>{row.measure}</td>
+					<td>{row.impact}</td>
+				</tr>
+			))}
+		</tbody>
+	</table>
+</div>

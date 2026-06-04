@@ -1,0 +1,140 @@
+<header class="fixed top-0 z-50 w-full border-b border-slate-200/60 bg-white/85 shadow-xl shadow-slate-200/25 backdrop-blur-lg dark:border-slate-800/60 dark:bg-slate-950/85 dark:shadow-none">
+	<nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
+		<a class="flex items-center gap-3 transition-opacity hover:opacity-80" href="/">
+			<img src="/stashLogo.svg" alt="StashIMS" class="h-7 w-7 rounded-md bg-white/90 dark:bg-slate-950/90 dark:[filter:brightness(0)_invert(1)]" />
+			<span class="font-headline text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-50">StashIMS</span>
+		</a>
+		<div class="hidden items-center gap-7 md:flex">
+			<a class="font-medium text-slate-600 transition-colors hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="/">Inicio</a>
+			<a class="font-medium text-slate-600 transition-colors hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="/#funcionalidades">Funcionalidades</a>
+			<a class="font-medium text-slate-600 transition-colors hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="/#faq">FAQ</a>
+			<a class="font-medium text-slate-600 transition-colors hover:text-primary dark:text-slate-400 dark:hover:text-primary" href="/#formulario">Contacto</a>
+		</div>
+		<div class="flex items-center gap-3">
+			<div class="relative">
+				<button
+					id="theme-menu-button"
+					type="button"
+					class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300/80 bg-white/90 text-slate-700 shadow-lg shadow-slate-200/25 transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200 dark:shadow-none"
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="theme-menu"
+					aria-label="Cambiar tema"
+				>
+					<span id="theme-menu-icon" class="material-symbols-outlined text-[1.2rem]">desktop_windows</span>
+				</button>
+				<div
+					id="theme-menu"
+					class="invisible absolute right-0 top-14 w-48 rounded-xl border border-slate-200/80 bg-white/95 p-2 opacity-0 shadow-2xl shadow-slate-200/30 transition-all dark:border-slate-700 dark:bg-slate-900/95 dark:shadow-black/30"
+					role="menu"
+					aria-labelledby="theme-menu-button"
+				>
+					<p class="px-2 pb-2 pt-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Tema</p>
+					<button type="button" data-theme-option="light" class="theme-option-btn flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" role="menuitem">
+						<span class="material-symbols-outlined text-[1.1rem]">light_mode</span>
+						Claro
+					</button>
+					<button type="button" data-theme-option="dark" class="theme-option-btn flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" role="menuitem">
+						<span class="material-symbols-outlined text-[1.1rem]">dark_mode</span>
+						Oscuro
+					</button>
+					<button type="button" data-theme-option="system" class="theme-option-btn flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" role="menuitem">
+						<span class="material-symbols-outlined text-[1.1rem]">desktop_windows</span>
+						Sistema
+					</button>
+				</div>
+			</div>
+			<a class="primary-gradient-btn rounded-xl px-5 py-2.5 font-headline font-bold tracking-tight text-white transition-transform active:scale-95" href="/#formulario">
+				Solicitar demo
+			</a>
+		</div>
+	</nav>
+</header>
+
+<script is:inline>
+	const themeMenuButton = document.getElementById("theme-menu-button");
+	const themeMenu = document.getElementById("theme-menu");
+	const themeIcon = document.getElementById("theme-menu-icon");
+
+	if (themeMenuButton instanceof HTMLButtonElement && themeMenu instanceof HTMLElement) {
+		const optionButtons = Array.from(themeMenu.querySelectorAll("[data-theme-option]"));
+		const themeMeta = {
+			light: { label: "claro", icon: "light_mode" },
+			dark: { label: "oscuro", icon: "dark_mode" },
+			system: { label: "sistema", icon: "desktop_windows" },
+		};
+
+		const closeMenu = () => {
+			themeMenu.classList.add("invisible", "opacity-0");
+			themeMenuButton.setAttribute("aria-expanded", "false");
+		};
+
+		const openMenu = () => {
+			themeMenu.classList.remove("invisible", "opacity-0");
+			themeMenuButton.setAttribute("aria-expanded", "true");
+		};
+
+		const updateThemeIndicator = (mode) => {
+			if (themeIcon instanceof HTMLElement) {
+				themeIcon.textContent = themeMeta[mode]?.icon ?? themeMeta.system.icon;
+			}
+
+			const selectedThemeLabel = themeMeta[mode]?.label ?? themeMeta.system.label;
+			themeMenuButton.setAttribute("aria-label", `Tema actual: ${selectedThemeLabel}. Cambiar tema`);
+
+			optionButtons.forEach((optionButton) => {
+				if (!(optionButton instanceof HTMLButtonElement)) return;
+				const optionMode = optionButton.dataset.themeOption;
+				const isSelected = optionMode === mode;
+				optionButton.setAttribute("aria-pressed", isSelected ? "true" : "false");
+				optionButton.classList.toggle("bg-slate-100", isSelected);
+				optionButton.classList.toggle("dark:bg-slate-800", isSelected);
+			});
+		};
+
+		const getCurrentMode = () => {
+			const mode = document.documentElement.dataset.themeMode;
+			if (mode === "light" || mode === "dark" || mode === "system") return mode;
+			return "system";
+		};
+
+		themeMenuButton.addEventListener("click", () => {
+			const isOpen = themeMenuButton.getAttribute("aria-expanded") === "true";
+			if (isOpen) {
+				closeMenu();
+				return;
+			}
+			openMenu();
+		});
+
+		optionButtons.forEach((optionButton) => {
+			if (!(optionButton instanceof HTMLButtonElement)) return;
+			optionButton.addEventListener("click", () => {
+				const selectedMode = optionButton.dataset.themeOption;
+				if (!selectedMode) return;
+
+				window.dispatchEvent(new CustomEvent("stashims-theme-set", { detail: { mode: selectedMode } }));
+				closeMenu();
+			});
+		});
+
+		document.addEventListener("click", (event) => {
+			if (!(event.target instanceof Node)) return;
+			if (themeMenu.contains(event.target) || themeMenuButton.contains(event.target)) return;
+			closeMenu();
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") {
+				closeMenu();
+			}
+		});
+
+		window.addEventListener("stashims-theme-change", (event) => {
+			const mode = event?.detail?.mode;
+			updateThemeIndicator(mode === "light" || mode === "dark" || mode === "system" ? mode : "system");
+		});
+
+		updateThemeIndicator(getCurrentMode());
+	}
+</script>
