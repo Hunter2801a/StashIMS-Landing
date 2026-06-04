@@ -1,3 +1,6 @@
+---
+const base = import.meta.env.BASE_URL;
+---
 <section id="funcionalidades" class="py-24 bg-surface-container">
 	<div class="max-w-7xl mx-auto px-8">
 		<div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
@@ -8,7 +11,7 @@
 			<a class="bg-primary text-white px-6 py-3 rounded-xl font-bold active:scale-95 transition-transform" href="#formulario">Solicitar demo</a>
 		</div>
 		<div class="mb-16">
-			<img src="/Dashboard.png" alt="Panel de control de StashIMS mostrando inventario, movimientos y reportes en tiempo real" class="w-full rounded-2xl shadow-xl border border-slate-200/60 dark:border-slate-700" />
+			<img src={`${base}/Dashboard.png`} alt="Panel de control de StashIMS mostrando inventario, movimientos y reportes en tiempo real" class="w-full rounded-2xl shadow-xl border border-slate-200/60 dark:border-slate-700" />
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			<div class="p-8 bg-surface-container-lowest rounded-xl border-l-4 border-primary">
