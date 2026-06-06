@@ -1,6 +1,6 @@
-# StashIMS Landing Page
+# Stash IMS Landing Page
 
-Landing page pública de StashIMS — software de gestión de inventarios (WMS) para PyMEs en Latinoamérica. Construida con Astro y Tailwind CSS.
+Landing page pública de Stash IMS — software de gestión de inventarios (WMS) para PyMEs en Panamá. Construida con Astro y Tailwind CSS.
 
 ## 🚀 Estructura del proyecto
 
