@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
+import ProblemSection from "../components/sections/ProblemSection.astro";
 import FeaturesSection from "../components/sections/FeaturesSection.astro";
 import FaqSection from "../components/sections/FaqSection.astro";
 import CtaSection from "../components/sections/CtaSection.astro";
@@ -8,28 +9,43 @@ import FaqSchema from "../components/schema/FaqSchema.astro";
 
 const pageTitle = "Stash IMS | Control de inventario inteligente para PyMEs";
 const pageDescription =
-	"Stash IMS: software de gestión de inventarios (WMS) para PyMEs en Panamá. Controlá stock, ubicaciones, reportes y valorización en tiempo real. Probá gratis.";
+	"Stash IMS: software de gestion de inventarios (WMS) para PyMEs en Panama. Controla stock, ubicaciones, reportes y valorizacion en tiempo real. Proba gratis.";
 
 const faqItems = [
 	{
 		question: "¿Stash IMS funciona para negocios con una sola bodega?",
 		answer:
-			"Sí. Puedes empezar con una bodega y escalar a múltiples ubicaciones cuando tu negocio crezca."
+			"Si. Puedes empezar con una bodega y escalar a multiples ubicaciones cuando tu negocio crezca."
 	},
 	{
 		question: "¿Puedo manejar productos con variantes como talles o colores?",
 		answer:
-			"Sí. Stash IMS permite crear atributos personalizados y organizar tu inventario con la estructura que necesites."
+			"Si. Stash IMS permite crear atributos personalizados y organizar tu inventario con la estructura que necesites."
 	},
 	{
 		question: "¿Necesito instalar algo en mis computadoras?",
 		answer:
-			"No. Stash IMS es 100% web. Solo necesitas un navegador y conexión a internet."
+			"No. Stash IMS es 100% web. Solo necesitas un navegador y conexion a internet."
 	},
 	{
-		question: "¿Cómo empiezo a usar Stash IMS?",
+		question: "¿Como empiezo a usar Stash IMS?",
 		answer:
 			"Completa el formulario de demo, te mostramos la plataforma y configuramos tu cuenta sin costo inicial."
+	},
+	{
+		question: "¿Cuanto tiempo toma implementar Stash IMS en mi negocio?",
+		answer:
+			"La configuracion inicial toma medio dia. Cargamos contigo los productos, bodegas y usuarios para que tu equipo pueda empezar a operar desde el primer dia."
+	},
+	{
+		question: "¿Que pasa si tengo varias sucursales o bodegas?",
+		answer:
+			"Stash IMS esta diseñado para operaciones multi-sede. Puedes manejar bodegas y tiendas por separado, con inventario independiente y transferencias entre ellas."
+	},
+	{
+		question: "¿Pierdo mis datos si decido no continuar?",
+		answer:
+			"No. Puedes exportar todo tu inventario y movimientos en cualquier momento desde la sección de reportes."
 	}
 ];
 ---
@@ -37,6 +53,7 @@ const faqItems = [
 <MainLayout title={pageTitle} description={pageDescription}>
 	<FaqSchema items={faqItems} />
 	<HeroSection />
+	<ProblemSection />
 	<FeaturesSection />
 	<FaqSection items={faqItems} />
 	<CtaSection />
