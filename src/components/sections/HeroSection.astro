@@ -2,7 +2,7 @@
 const phoneNumber = "50768382443";
 const message = "Hola, quiero más información sobre Stash IMS.";
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <section class="relative min-h-[795px] pt-20 lg:pt-0 flex items-center overflow-hidden bg-surface-bright">
 	<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

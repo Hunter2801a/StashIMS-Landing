@@ -14,7 +14,7 @@ interface Props {
 const { title, description } = Astro.props;
 const whatsappPhoneNumber = "50768382443";
 const whatsappMessage = "Hola, quiero agendar una demostración de Stash IMS.";
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <html class="light" lang="es">
