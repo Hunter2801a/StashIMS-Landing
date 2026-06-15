@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import WhatsAppButton from "../components/ui/WhatsAppButton.astro";
 import OrganizationSchema from "../components/schema/OrganizationSchema.astro";
 import SoftwareSchema from "../components/schema/SoftwareSchema.astro";
+import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 interface Props {
@@ -120,5 +121,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 			applyMode(getStoredMode());
 		</script>
+		<Analytics />
 	</body>
 </html>
